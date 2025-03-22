@@ -35,7 +35,7 @@ const TruthTable = ({ table }) => {
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className='text-center'>
           {table.map((row, rowIndex) => (
             <tr key={rowIndex} className="border-b border-gray-200 dark:border-gray-700">
               {headers.map((header, colIndex) => (

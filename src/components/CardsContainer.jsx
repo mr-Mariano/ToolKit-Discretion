@@ -39,7 +39,7 @@ const Card = ({ link, topic, description, icon: Icon }) => {
         to={`/${link}`}
         className="
           flex flex-col items-start justify-center
-          p-4 md:p-6
+          p-4 md:p-6 mx-auto 
           w-full max-w-xs bg-transparent border border-gray-200 rounded-lg shadow-sm
           dark:border-gray-700
           hover:shadow-md transition-shadow duration-200
@@ -61,7 +61,7 @@ const Card = ({ link, topic, description, icon: Icon }) => {
   const CardsContainer = () => {
     return (
       <div className="
-        flex flex-col  gap-6
+        flex flex-col  gap-6 
         w-full md:w-1/2 mx-auto p-4 md:p-8
       ">
         { TOPICS.map((topic, index) => (

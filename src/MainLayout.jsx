@@ -18,8 +18,10 @@ const MainLayout = ({ children }) => {
       <Nav />
 
       {/* Dynamic Content */}
-        <main className="flex-grow">
+      <main className="flex-grow w-full px-4 md:px-20">
+          <div className="max-w-screen-xl mx-auto">
             {children}
+          </div>
         </main>
 
       {/* Footer */}

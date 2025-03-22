@@ -56,8 +56,8 @@ const Equivalences = () => {
 
 
     return (
-      <div className="min-h-screen flex items-center justify-center md:mx-4 mt-15 md:mt-0">
-        <div className="w-full max-w-6xl px-20 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="flex items-start justify-center md:mx-4 mt-34 md:mt-44">
+        <div className="w-full max-w-6xl px-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Instrucciones */}
             <Card 
               className="rounded-lg border border-zinc-800 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-zinc-800/50 group"

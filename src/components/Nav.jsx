@@ -5,7 +5,7 @@ import Home from '../assets/icons/Home';
 
 import ThemeToggle from './ThemeToggle';
 
-const GITHUB = "https://github.com/mr-Mariano"
+const GITHUB = "https://github.com/mr-Mariano/ToolKit-Discretion/tree/main"
 
 const Nav = () => {
 

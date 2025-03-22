@@ -155,7 +155,7 @@ const Sets = () => {
     };
 
     return (
-            <div className="mt-22 md:mt-44 w-full mx-auto  p-6">
+            <div className="mt-34 md:mt-44 w-full mx-auto  p-6">
               <div className="flex flex-col items-center justify-center gap-8">
                 <div className='group flex flex-col items-center text-center justify-center gap-4'>
                   <h1 className='

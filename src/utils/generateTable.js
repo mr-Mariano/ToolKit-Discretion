@@ -56,7 +56,7 @@ const evaluateExpression = (expression, values) => {
         let prevExpr = null;
         while (expr !== prevExpr) {
             prevExpr = expr;
-            expr = expr.replace(/(\w+|\([^()]+\))\s*(<->|<=>)\s*(\w+|\([^()]+\))/g, '(($1 && $3) || (!$1 && !$3))');
+            expr = expr.replace(/(\w+|!?\w+|\([^()]+\))\s*(->|=>|→)\s*(\w+|!?\w+|\([^()]+\))/g, '(!$1 || $3)');
         }
         return expr;
     };
@@ -69,7 +69,7 @@ const evaluateExpression = (expression, values) => {
     try {
         return eval(expr);
     } catch (error) {
-        console.error('Error al evaluar la expresión lógica:', error);
+        console.error('Error al evaluar la expresión lógica:', error, expr);
         throw new Error('Error al evaluar la expresión lógica');
     }
 };

@@ -5,9 +5,9 @@ import Card from '../components/Card';
 
 const Logic = () => {
   return (
-    <div className="mt-22 md:mt-44  w-3/4 mx-auto ">
+    <div className="mt-22 md:mt-44  w-3/4 mx-auto  ">
   {/* Container */}
-  <div className="flex flex-wrap md:grid grid-cols-1 md:grid-cols-2 gap-6 opacity-100 transform scale-100 rounded-xl text-card-foreground p-8 h-full relative">
+  <div className="flex flex-wrap md:grid grid-cols-1 md:grid-cols-2 gap-6 opacity-100 transform scale-100 rounded-xl text-card-foreground h-full relative">
     
     {/* Instruction - Abarca las primeras 2 filas y la primera columna */}
     <Card className="col-span-1 rounded-lg border border-zinc-800 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-zinc-800/50 group">
@@ -16,7 +16,7 @@ const Logic = () => {
 
     {/* Truth Table Generator - Texto - Abarca la primera fila y segunda columna */}
     <Card className="col-span-1 rounded-lg border border-zinc-800 shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:shadow-zinc-800/50 group">
-      <h1 className="text-1xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-[#FFE14D] mb-4 mt-2 transition-transform duration-300 ease-in-out group-hover:scale-105">
+      <h1 className="text-1xl md:text-2xl lg:text-3xl font-bold text-gray-700 dark:text-[#FFE14D] mb-4 mt-2 transition-transform duration-300 ease-in-out group-hover:scale-105">
         Truth Table Generator
       </h1>
       <p className="text-xs md:text-sm lg:text-md text-gray-700 dark:text-gray-300 mb-4">
