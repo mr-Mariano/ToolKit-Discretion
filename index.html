@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>discretion</title>
+    <script>
+			function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            } else {
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+            }
+				localStorage.theme = theme;
+			}
+
+			if (localStorage.theme === 'dark') {
+				setTheme('dark');
+			} else if (localStorage.theme === 'light') {
+				setTheme('light');
+			} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+				setTheme('dark');
+			} else {
+				setTheme('light');
+			}
+		</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

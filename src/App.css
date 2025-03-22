@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  margin: 0 0;
+}
+
+@media (prefers-reduce-motion:reduce) {
+  html{
+    scroll-behavior: smooth;
+  }
+}
+
+body,
+html {
+		overscroll-behavior: none;
+	}
