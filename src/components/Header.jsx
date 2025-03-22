@@ -10,7 +10,7 @@ const Header = () => {
     '>
 
         <h1 className="
-          text-1xl md:text-2xl lg:text-3xl font-extrabold leading-8
+          text-4xl md:text-2xl lg:text-3xl font-extrabold leading-8 mb-2
           tracking-tight
           text-gray-900
           dark:text-white

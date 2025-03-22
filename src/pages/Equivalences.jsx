@@ -10,7 +10,7 @@ import { compareTables } from '../utils/compareTable';
 const InputField = ({ id, label, value, onChange, placeholder }) => {
   return (
     <div className="flex flex-col space-y-2">
-      <label htmlFor={id} className='text-md md:text-lg font-bold'>{label}</label>
+      <label htmlFor={id} className='text-xs md:text-sm lg:text-md  font-bold'>{label}</label>
       <input
         required
         id={id}
@@ -18,8 +18,7 @@ const InputField = ({ id, label, value, onChange, placeholder }) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-          focus:ring-blue-500 focus:border-blue-500 block w-full 
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm lg:text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full 
           px-3 py-2 truncate 
           dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
           dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -57,7 +56,7 @@ const Equivalences = () => {
 
 
     return (
-      <div className="min-h-screen flex items-center justify-center px-8 md:mx-4 mt-15 md:mt-0">
+      <div className="min-h-screen flex items-center justify-center md:mx-4 mt-15 md:mt-0">
         <div className="w-full max-w-6xl px-20 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Instrucciones */}
             <Card 
@@ -75,12 +74,12 @@ const Equivalences = () => {
                  hover:shadow-zinc-800/50 group"
               >
               <div className="flex flex-col items-center space-y-6">
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-extrabold leading-8
+                <h2 className="text-1xl md:text-2xl lg:text-3xl font-extrabold leading-8
                   transition-transform duration-300 ease-in-out group-hover:scale-105
                   mt-2">
                     Equivalencias Lógicas
                 </h2>
-                <p className="text-sm md:text-md lg:text-lg font-bold 
+                <p className="text-xs md:text-sm lg:text-md font-bold 
                 transition-transform duration-300 ease-in-out group-hover:scale-103
                 text-gray-900 dark:text-[#FFE14D]"
                 >
@@ -107,7 +106,7 @@ const Equivalences = () => {
                 
                 <button 
                   onClick={handleCheckEquivalence}
-                  className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
+                  className="text-xs md:text-sm lg:text-md  relative inline-flex items-center justify-center p-0.5 overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
                 >
                   <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
                     Verificar equivalencia

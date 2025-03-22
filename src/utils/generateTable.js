@@ -1,4 +1,3 @@
-
 export const generateTable = (expression) => {
     // 1. Extraer las variables únicas de la expresión lógica (mayúsculas y minúsculas)
     const variables = Array.from(new Set(expression.match(/[A-Za-z]/g)));
@@ -29,6 +28,7 @@ export const generateTable = (expression) => {
     return table;
 };
 
+
 const evaluateExpression = (expression, values) => {
     // Reemplazar las variables en la expresión con sus valores de verdad
     let expr = expression
@@ -51,7 +51,6 @@ const evaluateExpression = (expression, values) => {
         }
         return expr;
     };
-
     // Evaluar las equivalencias lógicas
     const evaluateEquivalences = (expr) => {
         let prevExpr = null;
@@ -74,8 +73,3 @@ const evaluateExpression = (expression, values) => {
         throw new Error('Error al evaluar la expresión lógica');
     }
 };
-
-// // Ejemplo de uso
-// const expression = '(p -> q) <-> (¬p ∨ q)';
-// const truthTable = generateTable(expression);
-// console.table(truthTable);

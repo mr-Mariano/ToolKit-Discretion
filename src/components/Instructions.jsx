@@ -7,14 +7,14 @@ const Instructions = () => {
       gap-2 md:gap-4 lg:gap-6
     ">
       <h2 className='
-        text-xl md:text-2xl lg:text-3xl font-extrabold leading-8
+        text-1xl md:text-2xl lg:text-3xl font-extrabold leading-8
         transition-transform duration-300 ease-in-out group-hover:scale-105
         mt-2
       '>
         Instructions
       </h2>
       <p className='
-        text-sm md:text-md lg:text-lg font-bold 
+        text-xs md:text-sm lg:text-md font-bold 
         transition-transform duration-300 ease-in-out group-hover:scale-103
         text-gray-900 dark:text-[#FFE14D]
       '>
