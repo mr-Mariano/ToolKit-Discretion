@@ -121,14 +121,14 @@ const Equivalences = () => {
                         className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
                         role="alert"
                       >
-                        <span className="font-medium">Success alert!</span> {'✅ Las expresiones son equivalentes'}
+                        <span className="font-medium">Success !</span> {'✅ The expressions are equivalent'}
                       </div>
                     ) : (
                       <div
                         className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
                         role="alert"
                       >
-                        <span className="font-medium">Error alert!</span> {'❌ Las expresiones no son equivalentes'}
+                        <span className="font-medium">Error!</span> {'❌ The expressions are not equivalent'}
                       </div>
                     )}
                   </div>

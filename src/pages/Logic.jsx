@@ -22,7 +22,9 @@ const Logic = () => {
       <p className="text-xs md:text-sm lg:text-md text-gray-700 dark:text-gray-300 mb-4">
         The first tool, a truth table generator, allows you to create and visualize truth tables for various logical expressions. It simplifies learning and helps you understand fundamental concepts in logic and discrete structures.
       </p>
-      <TruthTableGenerator />
+      <div className="overflow-x-auto">
+        <TruthTableGenerator />
+      </div>
     </Card>
 
     {/* Imagen - Abarca la segunda fila y ambas columnas */}

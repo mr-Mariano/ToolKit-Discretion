@@ -88,7 +88,7 @@ const Sets = () => {
             console.log(setBArray);
             console.log(setCArray);
 
-            setError("Error en la sintaxis de los conjuntos");
+            setError("Error in the syntax of the sets");
             setResults(null);
             return;
         }
