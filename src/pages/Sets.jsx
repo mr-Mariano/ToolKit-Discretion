@@ -29,35 +29,30 @@ const Sets = () => {
     const [error, setError] = useState('')
 
     const processSet = (set) => {
-        if (set.startsWith('{') && set.endsWith('}')) {
-          // Es un conjunto único, validar sintaxis
-          const innerContent = set.slice(1, -1);
-          const elements = innerContent.split(',').map(item => item.trim());
-      
-          // Validar que no haya elementos con puntos u otros caracteres no permitidos
-          for (const element of elements) {
-            if (!/^[a-zA-Z0-9]+$/.test(element)) {
-                return new Error("Sintaxis inválida en los elementos: " + set);
-            }
-          }
-          // validar que solo haya un par de llaves
-          if(set.match(/\{/g).length > 1 || set.match(/\}/g).length > 1){
-            return new Error("Sintaxis inválida en los elementos: " + set);
-          }
-          console.log([set]);
-          return [set]; // Devuelve la cadena original si la sintaxis es válida
-        } else {
-          // Son elementos separados, crear un array y validar sintaxis
-          const elements = set.split(',').map(item => item.trim());
-          for (const element of elements) {
-            if (!/^[a-zA-Z0-9]+$/.test(element)) {
+      // Dividir los elementos por comas y eliminar espacios
+      const elements = set.split(',').map(item => item.trim());
+  
+      for (const element of elements) {
+          // Validar elementos simples (letras, números, o números con puntos decimales)
+          if (!/^[a-zA-Z0-9.]+$/.test(element) && !/^\{[a-zA-Z0-9.,]+\}$/.test(element)) {
               return new Error("Sintaxis inválida en los elementos: " + set);
-            }
           }
-          console.log(elements);
-          return elements;
-        }
-      };
+  
+          // Validar que los conjuntos anidados no contengan caracteres no permitidos
+          if (element.startsWith('{') && element.endsWith('}')) {
+              const innerContent = element.slice(1, -1);
+              const innerElements = innerContent.split(',').map(item => item.trim());
+              for (const innerElement of innerElements) {
+                  if (!/^[a-zA-Z0-9.]+$/.test(innerElement)) {
+                      return new Error("Sintaxis inválida en los elementos anidados: " + set);
+                  }
+              }
+          }
+      }
+  
+      console.log(elements);
+      return elements; // Devuelve el array de elementos si la sintaxis es válida
+  };
 
     const handleSetOperations = () => {
 
@@ -89,6 +84,10 @@ const Sets = () => {
         const setCArray = processSet(setC);
     
         if (setAArray instanceof Error || setBArray instanceof Error || setCArray instanceof Error) {
+            console.log(setAArray);
+            console.log(setBArray);
+            console.log(setCArray);
+
             setError("Error en la sintaxis de los conjuntos");
             setResults(null);
             return;
