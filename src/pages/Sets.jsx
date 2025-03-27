@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SetResults from '../components/SetsResults'
+import ChartVenn from '../components/VennDiagram'
 import ErrorComponent from '../components/ErrorComponent'
 
 const Input = ({ value ,onChange, placeholder }) => {
@@ -26,6 +27,7 @@ const Sets = () => {
     const [setB, setSetB] = useState('');
     const [setC, setSetC] = useState('');
     const [results, setResults] = useState(null);
+    const [setsABC, setSetsABC] = useState([]);
     const [error, setError] = useState('')
 
     const processSet = (set) => {
@@ -52,7 +54,7 @@ const Sets = () => {
   
       console.log(elements);
       return elements; // Devuelve el array de elementos si la sintaxis es válida
-  };
+    };
 
     const handleSetOperations = () => {
 
@@ -127,7 +129,6 @@ const Sets = () => {
         // Diferencia simetrica de C y B o B y C
         const symDifferenceBandC = findsSymDiff(setBArray, setCArray);
         
-        console.log("HELLLO")
 
         setResults({
             cardinalityA: [...new Set(setAArray)].length,
@@ -149,6 +150,7 @@ const Sets = () => {
             symDiffAC : symDifferenceAandC,
             symDiffBC : symDifferenceBandC
         });
+        setSetsABC([setAArray, setBArray, setCArray])
 
         setError(null);
     };
@@ -165,64 +167,71 @@ const Sets = () => {
                   <p>Esta página te permite realizar operaciones con conjuntos y visualizar los resultados.</p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center gap-4">
+                  <div className="flex flex-col items-center justify-center gap-4">
+                    <div className='flex flex-col items-center justify-center gap-2'>
+                      <label className='text-gray-900 dark:text-[#FFE14D] text-lg font-bold'>
+                        Conjunto A:
+                      </label>
+                        <Input
+                          value={setA}
+                          onChange={(e) => setSetA(e.target.value)}
+                          placeholder="Introduce los elementos del conjunto A separados por comas"
+                        />
+                    </div>
 
-                  <div className='flex flex-col items-center justify-center gap-2'>
-                    <label className='
+                    <div className='flex flex-col items-center justify-center gap-2'>
+                      <label className='text-lg font-bold'>
+                        Conjunto B:
+                      </label>
+                        <Input
+                          value={setB}
+                          onChange={(e) => setSetB(e.target.value)}
+                          placeholder="Introduce los elementos del conjunto B separados por comas"
+                        />
+                    </div>
+
+                    <div className='flex flex-col items-center justify-center gap-2'>
+                      <label className='
                       text-gray-900 dark:text-[#FFE14D] text-lg font-bold'>
-                      Conjunto A:
-                    </label>
-                      <Input
-                        value={setA}
-                        onChange={(e) => setSetA(e.target.value)}
-                        placeholder="Introduce los elementos del conjunto A separados por comas"
-                      />
+                        Conjunto C:
+                      </label>
+                        <Input
+                          value={setC}
+                          onChange={(e) => setSetC(e.target.value)}
+                          placeholder="Introduce los elementos del conjunto C separados por comas"
+                        />
+                    </div>
+
+                    <button 
+                      onClick={handleSetOperations}
+                      className=  
+                        "relative text-xs md:text-sm lg:text-md inline-flex items-center justify-center p-0.5 mb-2 me-2  mt-2 overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
+                    >
+                      <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+                        Crear conjuntos
+                      </span>
+                    </button>
                   </div>
-
-                  <div className='flex flex-col items-center justify-center gap-2'>
-                    <label className='
-                       text-lg font-bold
-                    '>
-                      Conjunto B:
-                    </label>
-                      <Input
-                        value={setB}
-                        onChange={(e) => setSetB(e.target.value)}
-                        placeholder="Introduce los elementos del conjunto B separados por comas"
-                      />
-                  </div>
-
-                  <div className='flex flex-col items-center justify-center gap-2'>
-                    <label className='
-                    text-gray-900 dark:text-[#FFE14D] text-lg font-bold'>
-                      Conjunto C:
-                    </label>
-                      <Input
-                        value={setC}
-                        onChange={(e) => setSetC(e.target.value)}
-                        placeholder="Introduce los elementos del conjunto C separados por comas"
-                      />
-                  </div>
-
-                  <button 
-                  onClick={handleSetOperations}
-                  className=
-                    "relative text-xs md:text-sm lg:text-md inline-flex items-center justify-center p-0.5 mb-2 me-2  mt-2 overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
-                  >
-                    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-                    Create sets
-                    </span>
-                  </button>
-                </div>
-
+                    
                     { 
                         results &&
-                        <SetResults results={results} />
+                        <div>                          
+                          <SetResults results={results} />
+                        </div>
+                    }
+                    { 
+                        results &&
+                          <div>
+                            <ChartVenn setsABC={setsABC}/>
+                          </div>
                     }
                     {
                         error &&
                         <ErrorComponent msg={error}/>
                     }
+                    
+                   
+
                 </div>
             </div>
     );

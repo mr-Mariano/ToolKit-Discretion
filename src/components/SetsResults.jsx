@@ -20,6 +20,7 @@ const ResultCard = ({ title, data, className = '' }) => {
 };
 
 const ResultsContainer = ({ results }) => {
+  
   const sections = [
     {
       title: 'Cardinalidad',
