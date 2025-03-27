@@ -26,8 +26,8 @@ const TOPICS = [
       icon: Sets
   },
   {
-      link: 'relations',
-      topic: 'Relations',
+      link: 'successions',
+      topic: 'Successions',
       description: 'Lorem ipsum dolor sit amet.',
       icon: Relations
   },

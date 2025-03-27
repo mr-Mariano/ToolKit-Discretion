@@ -8,7 +8,7 @@ import Index from './pages/Index'
 import Logic from './pages/Logic'
 import Equivalences from './pages/Equivalences'
 import Sets from './pages/Sets'
-import Relations from './pages/Relations'
+import Successions from './pages/Successions'
 import Page5 from './pages/Page5'
 import Subpage1 from './pages/subpages/Subpage1'
 import Subpage2 from './pages/subpages/Subpage2'
@@ -24,7 +24,7 @@ function App() {
           <Route path="/logic" element={<Logic />} />
           <Route path="/equivalences" element={<Equivalences />} />
           <Route path="/sets" element={<Sets />} />
-          <Route path="/relations" element={<Relations />} />
+          <Route path="/successions" element={<Successions />} />
           <Route path="/page5" element={<Page5 />} />
           <Route path="/page1/subpage1" element={<Subpage1 />} />
           <Route path="/page1/subpage2" element={<Subpage2 />} />
