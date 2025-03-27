@@ -31,18 +31,18 @@ const Sets = () => {
     const [error, setError] = useState('')
 
     const processSet = (set) => {
-      // Dividir los elementos por comas y eliminar espacios
-      const elements = set.split(',').map(item => item.trim());
+      // Expresión regular para dividir considerando conjuntos anidados
+      const elements = set.match(/\{[^{}]*\}|[^,]+/g).map(item => item.trim());
   
       for (const element of elements) {
-          // Validar elementos simples (letras, números, o números con puntos decimales)
-          if (!/^[a-zA-Z0-9.]+$/.test(element) && !/^\{[a-zA-Z0-9.,]+\}$/.test(element)) {
+          // Validar elementos simples (letras, números o decimales)
+          if (!/^[a-zA-Z0-9.]+$/.test(element) && !/^\{[a-zA-Z0-9.,\s]+\}$/.test(element)) {
               return new Error("Sintaxis inválida en los elementos: " + set);
           }
   
-          // Validar que los conjuntos anidados no contengan caracteres no permitidos
+          // Validar conjuntos anidados
           if (element.startsWith('{') && element.endsWith('}')) {
-              const innerContent = element.slice(1, -1);
+              const innerContent = element.slice(1, -1).trim();
               const innerElements = innerContent.split(',').map(item => item.trim());
               for (const innerElement of innerElements) {
                   if (!/^[a-zA-Z0-9.]+$/.test(innerElement)) {
@@ -54,7 +54,16 @@ const Sets = () => {
   
       console.log(elements);
       return elements; // Devuelve el array de elementos si la sintaxis es válida
-    };
+
+  };
+  
+  // **Pruebas**
+  console.log(processSet("a,b,c"));       // ["a", "b", "c"]
+  console.log(processSet("{a,b},c"));     // ["{a,b}", "c"]
+  console.log(processSet("a,{b,c}"));     // ["a", "{b,c}"]
+  console.log(processSet("{1.2,3},a"));   // ["{1.2,3}", "a"]
+  
+ 
 
     const handleSetOperations = () => {
 
