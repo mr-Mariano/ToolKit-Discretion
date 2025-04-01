@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import Logic from '../assets/icons/Logic'
 import Equivalences from '../assets/icons/Equivalences'
 import Sets from '../assets/icons/Sets'
-import Relations from '../assets/icons/Relations'
+import Successions from '../assets/icons/Successions'
 
 const TOPICS = [
   { 
@@ -29,7 +29,7 @@ const TOPICS = [
       link: 'successions',
       topic: 'Successions',
       description: 'Lorem ipsum dolor sit amet.',
-      icon: Relations
+      icon: Successions
   },
 ];
 
