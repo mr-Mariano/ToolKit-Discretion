@@ -5,6 +5,7 @@ import Logic from '../assets/icons/Logic'
 import Equivalences from '../assets/icons/Equivalences'
 import Sets from '../assets/icons/Sets'
 import Successions from '../assets/icons/Successions'
+import Counts from '../assets/icons/Counts'
 
 const TOPICS = [
   { 
@@ -28,9 +29,15 @@ const TOPICS = [
   {
       link: 'successions',
       topic: 'Successions',
-      description: 'Lorem ipsum dolor sit amet.',
+      description: 'Successions calculator.',
       icon: Successions
   },
+  {
+    link: 'count',
+    topic: 'Count Methods',
+    description: 'Lorem ipsum dolor sit amet.',
+    icon: Counts
+},
 ];
 
 const Card = ({ link, topic, description, icon: Icon }) => {

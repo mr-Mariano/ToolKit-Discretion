@@ -9,7 +9,7 @@ import Logic from './pages/Logic'
 import Equivalences from './pages/Equivalences'
 import Sets from './pages/Sets'
 import Successions from './pages/Successions'
-import Page5 from './pages/Page5'
+import Count from './pages/Count'
 import Subpage1 from './pages/subpages/Subpage1'
 import Subpage2 from './pages/subpages/Subpage2'
 import Subpage3 from './pages/subpages/Subpage3'
@@ -25,7 +25,7 @@ function App() {
           <Route path="/equivalences" element={<Equivalences />} />
           <Route path="/sets" element={<Sets />} />
           <Route path="/successions" element={<Successions />} />
-          <Route path="/page5" element={<Page5 />} />
+          <Route path="/count" element={<Count />} />
           <Route path="/page1/subpage1" element={<Subpage1 />} />
           <Route path="/page1/subpage2" element={<Subpage2 />} />
           <Route path="/page1/subpage3" element={<Subpage3 />} />

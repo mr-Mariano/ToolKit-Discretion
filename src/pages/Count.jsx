@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Page5 = () => {
+const Count = () => {
   return (
     <div>
-      Page 5
+       Count Methods
     </div>
   )
 }
 
-export default Page5
+export default Count
