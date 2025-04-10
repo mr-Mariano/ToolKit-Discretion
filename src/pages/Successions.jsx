@@ -32,37 +32,9 @@ const Successions = () => {
   const [multiplication, setMultiplication] = useState(1);
 
 
-
+  // Aqui se deberia desarrollar la logica para la sucesion
   const generateSuccession = () => {
-    const m = parseInt(initialValue, 10);
-    const n = parseInt(finalValue, 10);
-
-    if( isNaN(m) || isNaN(n) || m > n || succession === '') {
-      setError('Por favor, introduce valores válidos para m y n, y una sucesión válida.');
-      return;
-    }
-
-    try {
-      const generatedResults = [];
-      for (let k = n; k >= m; k--) { // Recorremos de n a m
-        const expression = succession.replace(/k/g, `(${k})`).replace(/\^/g, '**'); // Reemplazo seguro
-        const func = new Function(`return ${expression};`); 
-        const value = func(); 
-        setSum((prevSum) =>  prevSum + value);
-        setMultiplication((prevMultiplication) => prevMultiplication * value);
-
-        generatedResults.push({ symbolic: expression, value });
-
-
-      }
-  
-      setResults(generatedResults);
-      setError('');
-
-      console.log('Resultados generados:', generatedResults);
-    } catch (error) {
-      setError('Error en la evaluación de la sucesión. Verifica la sintaxis.');
-    }
+    return 0;
   }
 
   return (
@@ -123,7 +95,12 @@ const Successions = () => {
                 Crear Sucesiones
               </span>
             </button>
+
+
+            {/* Mensaje de Error */}
             {error && <ErrorComponent msg={error} />}
+
+            {/* Suma total y multiplicación */}
             { sum != 0 && multiplication != 1 && (
                 <div className='flex flex-col items-center justify-center gap-2
                 text-gray-900 dark:text-[#5d62e2] text-md font-bold'>
@@ -133,6 +110,10 @@ const Successions = () => {
                   <p><span className='text-black dark:text-white'>Multiplicación Total:</span> {multiplication}</p>
                 </div>
             )}
+
+
+            {/* Tabla de Resultados */}
+
             {results.length > 0 && (
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -149,8 +130,12 @@ const Successions = () => {
                     <tbody>
                         { results.map((result, index) => (
                           <tr key={index} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                            <td className="px-6 py-4">{result.symbolic}</td>
-                            <td className="px-6 py-4">{result.value.toFixed(6)}</td>
+                            <td className="px-6 py-4">
+                              {result.symbolic}
+                            </td>
+                            <td className="px-6 py-4">
+                              {result.value.toFixed(6)}
+                            </td>
                           </tr>
                   ))}
                     </tbody>
