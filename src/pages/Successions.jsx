@@ -51,7 +51,7 @@ const Successions = () => {
     for (let n = initial; n <= final; n++) {
       try { const valueResult = eval(currentFormula.replace(/n/g, n));
         newResults.push({
-          symbolic: `${currentFormula.replace(/k/g, k)}`,
+          symbolic: `${currentFormula.replace(/n/g, n)}`,
           value: valueResult
         })
         totalSum += valueResult;
