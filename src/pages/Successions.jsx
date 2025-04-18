@@ -32,8 +32,38 @@ const Successions = () => {
   const [multiplication, setMultiplication] = useState(1);
 
 
-  // Aqui se deberia desarrollar la logica para la sucesion
   const generateSuccession = () => {
+    const currentFormula = succession;
+    const initial = parseInt(initialValue);
+    const final = parseInt(finalValue);
+    if (!isNaN(initial) || !isNaN(final)){
+      setError("Los valores ingresados deben de ser números enteros");
+      return;
+    }
+    if (initial > final){
+      setError("El limite inicial debe ser menor que el limite final");
+      return;
+    }
+    const newResults = [];
+    let totalSum = 0;
+    let totalProduct = 1;
+
+    for (let n = initial; n <= final; n++) {
+      try { const valueResult = eval(currentFormula.replace(/n/g, n));
+        newResults.push({
+          symbolic: `${currentFormula.replace(/k/g, k)}`,
+          value: valueResult
+        })
+        totalSum += valueResult;
+        totalProduct *= valueResult;
+      } catch (error) {
+        setError("Error en la sintaxis de la formula");
+        return;
+      }
+      setResults(newResults);
+      setSum(totalSum);
+      setMultiplication(totalProduct);
+    }
     return 0;
   }
 
