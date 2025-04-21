@@ -33,10 +33,14 @@ const Successions = () => {
 
 
   const generateSuccession = () => {
+    setError('');
     const currentFormula = succession;
     const initial = parseInt(initialValue);
     const final = parseInt(finalValue);
-    if (!isNaN(initial) || !isNaN(final)){
+    setResults([]);
+    setSum(0);
+    setMultiplication(1);
+    if (isNaN(initial) || isNaN(final)){
       setError("Los valores ingresados deben de ser números enteros");
       return;
     }
@@ -48,22 +52,36 @@ const Successions = () => {
     let totalSum = 0;
     let totalProduct = 1;
 
-    for (let n = initial; n <= final; n++) {
-      try { const valueResult = eval(currentFormula.replace(/n/g, n));
+    for (let k = initial; k <= final; k++) {
+      try { const formula = currentFormula.replace(/k/g, k).replace(/\^/g, '**').replace(/log/g, 'Math.log');
+
+        if (formula.includes('/0')) {
+          throw new Error("División entre cero detectada");
+        }
+
+        if (formula.includes('Math.log') && k <= 0) {
+          throw new Error(`Logaritmo no definido para k = ${k}`);
+        }
+
+        const value = eval(formula);
+        if (!Number.isFinite(value)) {
+          throw new Error("Operación matemática inválida");
+        }
+
         newResults.push({
-          symbolic: `${currentFormula.replace(/n/g, n)}`,//
-          value: valueResult
+          symbolic: `A${k} = ${formula}`,
+          value: value
         })
-        totalSum += valueResult;
-        totalProduct *= valueResult;
+        totalSum += value;
+        totalProduct *= value;
       } catch (error) {
-        setError("Error en la sintaxis de la formula");
+        setError(error.message);
         return;
       }
-      setResults(newResults);
-      setSum(totalSum);
-      setMultiplication(totalProduct);
     }
+    setResults(newResults);
+    setSum(totalSum);
+    setMultiplication(totalProduct);
     return 0;
   }
 
