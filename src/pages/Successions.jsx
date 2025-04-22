@@ -32,8 +32,56 @@ const Successions = () => {
   const [multiplication, setMultiplication] = useState(1);
 
 
-  // Aqui se deberia desarrollar la logica para la sucesion
   const generateSuccession = () => {
+    setError('');
+    const currentFormula = succession;
+    const initial = parseInt(initialValue);
+    const final = parseInt(finalValue);
+    setResults([]);
+    setSum(0);
+    setMultiplication(1);
+    if (isNaN(initial) || isNaN(final)){
+      setError("Los valores ingresados deben de ser números enteros");
+      return;
+    }
+    if (initial > final){
+      setError("El limite inicial debe ser menor que el limite final");
+      return;
+    }
+    const newResults = [];
+    let totalSum = 0;
+    let totalProduct = 1;
+
+    for (let k = initial; k <= final; k++) {
+      try { const formula = currentFormula.replace(/k/g, k).replace(/\^/g, '**').replace(/log/g, 'Math.log');
+
+        if (formula.includes('/0')) {
+          throw new Error("División entre cero detectada");
+        }
+
+        if (formula.includes('Math.log') && k <= 0) {
+          throw new Error(`Logaritmo no definido para k = ${k}`);
+        }
+
+        const value = eval(formula);
+        if (!Number.isFinite(value)) {
+          throw new Error("Operación matemática inválida");
+        }
+
+        newResults.push({
+          symbolic: `A${k} = ${formula}`,
+          value: value
+        })
+        totalSum += value;
+        totalProduct *= value;
+      } catch (error) {
+        setError(error.message);
+        return;
+      }
+    }
+    setResults(newResults);
+    setSum(totalSum);
+    setMultiplication(totalProduct);
     return 0;
   }
 
