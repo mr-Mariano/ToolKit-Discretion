@@ -1,4 +1,5 @@
 import React from 'react'
+import * as math from 'mathjs';
 import { useState } from 'react'
 import Card from '../components/Card'
 import ErrorComponent from '../components/ErrorComponent'
@@ -32,58 +33,118 @@ const Successions = () => {
   const [multiplication, setMultiplication] = useState(1);
 
 
+  // const generateSuccession = () => {
+  //   setError('');
+  //   const currentFormula = succession;
+  //   const initial = parseInt(initialValue);
+  //   const final = parseInt(finalValue);
+  //   setResults([]);
+  //   setSum(0);
+  //   setMultiplication(1);
+  //   if (isNaN(initial) || isNaN(final)){
+  //     setError("Los valores ingresados deben de ser números enteros");
+  //     return;
+  //   }
+  //   if (initial > final){
+  //     setError("El limite inicial debe ser menor que el limite final");
+  //     return;
+  //   }
+  //   const newResults = [];
+  //   let totalSum = 0;
+  //   let totalProduct = 1;
+
+  //   for (let k = initial; k <= final; k++) {
+  //     try { const formula = currentFormula.replace(/k/g, k).replace(/\^/g, '**').replace(/log/g, 'Math.log');
+
+  //       if (formula.includes('/0')) {
+  //         throw new Error("División entre cero detectada");
+  //       }
+
+  //       if (formula.includes('Math.log') && k <= 0) {
+  //         throw new Error(`Logaritmo no definido para k = ${k}`);
+  //       }
+
+  //       const value = eval(formula);
+  //       if (!Number.isFinite(value)) {
+  //         throw new Error("Operación matemática inválida");
+  //       }
+
+  //       newResults.push({
+  //         symbolic: `A${k} = ${formula}`,
+  //         value: value
+  //       })
+  //       totalSum += value;
+  //       totalProduct *= value;
+  //     } catch (error) {
+  //       setError(error.message);
+  //       return;
+  //     }
+  //   }
+  //   setResults(newResults);
+  //   setSum(totalSum);
+  //   setMultiplication(totalProduct);
+  //   return 0;
+  // }
+
   const generateSuccession = () => {
     setError('');
-    const currentFormula = succession;
-    const initial = parseInt(initialValue);
-    const final = parseInt(finalValue);
     setResults([]);
     setSum(0);
     setMultiplication(1);
-    if (isNaN(initial) || isNaN(final)){
-      setError("Los valores ingresados deben de ser números enteros");
+  
+    // Validar que la fórmula solo use la variable 'k'
+    const allowedVariablesRegex = /^[^a-zA-Z]*k[^a-zA-Z]*$/;
+    if (!allowedVariablesRegex.test(succession)) {
+      setError("La fórmula debe usar exclusivamente la variable 'k'.");
       return;
     }
-    if (initial > final){
-      setError("El limite inicial debe ser menor que el limite final");
+  
+    const initial = parseInt(initialValue);
+    const final = parseInt(finalValue);
+  
+    // Validaciones iniciales
+    if (isNaN(initial) || isNaN(final)) {
+      setError('Los valores ingresados deben de ser números enteros.');
       return;
     }
+    if (initial > final) {
+      setError('El límite inicial debe ser menor o igual que el límite final.');
+      return;
+    }
+  
     const newResults = [];
     let totalSum = 0;
     let totalProduct = 1;
-
+  
     for (let k = initial; k <= final; k++) {
-      try { const formula = currentFormula.replace(/k/g, k).replace(/\^/g, '**').replace(/log/g, 'Math.log');
-
-        if (formula.includes('/0')) {
-          throw new Error("División entre cero detectada");
-        }
-
-        if (formula.includes('Math.log') && k <= 0) {
-          throw new Error(`Logaritmo no definido para k = ${k}`);
-        }
-
-        const value = eval(formula);
+      try {
+        const parsedFormula = succession.replace(/k/g, k);
+        const value = math.evaluate(parsedFormula);
+  
         if (!Number.isFinite(value)) {
-          throw new Error("Operación matemática inválida");
+          throw new Error(`Valor inválido calculado para k = ${k}`);
         }
-
+  
         newResults.push({
-          symbolic: `A${k} = ${formula}`,
-          value: value
-        })
+          symbolic: `A${k} = ${parsedFormula}`,
+          value,
+        });
         totalSum += value;
         totalProduct *= value;
       } catch (error) {
-        setError(error.message);
+        setResults([]);
+        setSum(0);
+        setMultiplication(1);
+        setError(`Error en k = ${k}: ${error.message}`);
         return;
       }
     }
+  
     setResults(newResults);
     setSum(totalSum);
     setMultiplication(totalProduct);
-    return 0;
-  }
+  };
+  
 
   return (
     <div className="mt-34 md:mt-44 w-full mx-auto p-6">
