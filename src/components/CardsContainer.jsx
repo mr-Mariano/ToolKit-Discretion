@@ -32,12 +32,6 @@ const TOPICS = [
       description: 'Successions calculator.',
       icon: Successions
   },
-  {
-    link: 'count',
-    topic: 'Count Methods',
-    description: 'Lorem ipsum dolor sit amet.',
-    icon: Counts
-},
 ];
 
 const Card = ({ link, topic, description, icon: Icon }) => {

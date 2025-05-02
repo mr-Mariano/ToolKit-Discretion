@@ -77,19 +77,19 @@ const Equivalences = () => {
                 <h2 className="text-1xl md:text-2xl lg:text-3xl font-extrabold leading-8
                   transition-transform duration-300 ease-in-out group-hover:scale-105
                   mt-2">
-                    Equivalencias Lógicas
+                    Logical Equivalences
                 </h2>
                 <p className="text-xs md:text-sm lg:text-md font-bold 
                 transition-transform duration-300 ease-in-out group-hover:scale-103
                 text-gray-900 dark:text-[#FFE14D]"
                 >
-                  Ingresa dos expresiones lógicas para verificar si son equivalentes.
+                   Enter two logical expressions to verify if they are equivalent.
                 </p>
                 
                 <div className="w-full max-w-md space-y-4">
                   <InputField 
                     id="expression1" 
-                    label="Expresión lógica 1" 
+                    label="1st Logical Expression" 
                     value={expression1} 
                     onChange={(e) => setExpression1(e.target.value)} 
                     placeholder="p -> q" 
@@ -97,7 +97,7 @@ const Equivalences = () => {
                   
                   <InputField 
                     id="expression2" 
-                    label="Expresión lógica 2" 
+                    label="2nd Logical Expression" 
                     value={expression2} 
                     onChange={(e) => setExpression2(e.target.value)} 
                     placeholder="¬p ∨ q" 
@@ -109,7 +109,7 @@ const Equivalences = () => {
                   className="text-xs md:text-sm lg:text-md  relative inline-flex items-center justify-center p-0.5 overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
                 >
                   <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
-                    Verificar equivalencia
+                    Verify Equivalence
                   </span>
                 </button>
 

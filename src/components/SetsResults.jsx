@@ -23,50 +23,50 @@ const ResultsContainer = ({ results }) => {
   
   const sections = [
     {
-      title: 'Cardinalidad',
+      title: 'Cardinality',
       data: [
-        { label: 'Cardinalidad de A', value: results.cardinalityA },
-        { label: 'Cardinalidad de B', value: results.cardinalityB },
-        { label: 'Cardinalidad de C', value: results.cardinalityC },
+        { label: 'Cardinality of A', value: results.cardinalityA },
+        { label: 'Cardinality of B', value: results.cardinalityB },
+        { label: 'Cardinality of C', value: results.cardinalityC },
       ],
     },
     {
-      title: 'Intersecciones',
+      title: 'Intersections',
       data: [
-        { label: 'Intersección de A y B', value: `[ ${results.interAandB.join(', ')} ]` },
-        { label: 'Intersección de A y C', value: `[ ${results.interAandC.join(', ')} ]` },
-        { label: 'Intersección de C y B', value: `[ ${results.interCandB.join(', ')} ]` },
+        { label: 'Intersection of A and B', value: `[ ${results.interAandB.join(', ')} ]` },
+        { label: 'Intersection of A and C', value: `[ ${results.interAandC.join(', ')} ]` },
+        { label: 'Intersection of C and B', value: `[ ${results.interCandB.join(', ')} ]` },
       ],
     },
     {
-      title: 'Uniones',
+      title: 'Unions',
       data: [
-        { label: 'Unión de A y B', value: `[ ${results.unionAandB.join(', ')} ]` },
-        { label: 'Unión de A y C', value: `[ ${results.unionAandC.join(', ')} ]` },
-        { label: 'Unión de C y B', value: `[ ${results.unionCandB.join(', ')} ]` },
+        { label: 'Union of A and B', value: `[ ${results.unionAandB.join(', ')} ]` },
+        { label: 'Union of A and C', value: `[ ${results.unionAandC.join(', ')} ]` },
+        { label: 'Union of C and B', value: `[ ${results.unionCandB.join(', ')} ]` },
       ],
     },
     {
-      title: 'Diferencias',
+      title: 'Differences',
       data: [
-        { label: 'Diferencia de A - B', value: `[ ${results.differenceAB.join(', ')} ]` },
-        { label: 'Diferencia de B - A', value: `[ ${results.differenceBA.join(', ')} ]` },
-        { label: 'Diferencia de A - C', value: `[ ${results.differenceAC.join(', ')} ]` },
-        { label: 'Diferencia de C - A', value: `[ ${results.differenceCA.join(', ')} ]` },
-        { label: 'Diferencia de B - C', value: `[ ${results.differenceBC.join(', ')} ]` },
-        { label: 'Diferencia de C - B', value: `[ ${results.differenceCB.join(', ')} ]` },
+        { label: 'Difference of A - B', value: `[ ${results.differenceAB.join(', ')} ]` },
+        { label: 'Difference of B - A', value: `[ ${results.differenceBA.join(', ')} ]` },
+        { label: 'Difference of A - C', value: `[ ${results.differenceAC.join(', ')} ]` },
+        { label: 'Difference of C - A', value: `[ ${results.differenceCA.join(', ')} ]` },
+        { label: 'Difference of B - C', value: `[ ${results.differenceBC.join(', ')} ]` },
+        { label: 'Difference of C - B', value: `[ ${results.differenceCB.join(', ')} ]` },
       ],
     },
     {
-      title: 'Diferencias Simétricas',
+      title: 'Symmetric Differences',
       data: [
-        { label: 'Diferencia Simétrica de A y B', value: `[ ${results.symDiffAB.join(', ')} ]` },
-        { label: 'Diferencia Simétrica de A y C', value: `[ ${results.symDiffAC.join(', ')} ]` },
-        { label: 'Diferencia Simétrica de C y B', value: `[ ${results.symDiffBC.join(', ')} ]` },
+        { label: 'Symmetric Difference of A and B', value: `[ ${results.symDiffAB.join(', ')} ]` },
+        { label: 'Symmetric Difference of A and C', value: `[ ${results.symDiffAC.join(', ')} ]` },
+        { label: 'Symmetric Difference of C and B', value: `[ ${results.symDiffBC.join(', ')} ]` },
       ],
-      className: 'col-span-2', // Clase adicional para abarcar 2 columnas
+      className: 'col-span-2', // Additional class to span 2 columns
     },
-  ];
+];
 
   return (
     <div className="flex flex-col items-center justify-center mt-8 w-full max-w-6xl">
