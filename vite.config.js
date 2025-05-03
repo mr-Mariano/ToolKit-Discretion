@@ -2,16 +2,16 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-
-// https://vite.dev/config/
 export default defineConfig({
+  base: './', // Usa './' si el proyecto está en un subdirectorio
   plugins: [
     react(),
     tailwindcss()
   ],
   build: {
     rollupOptions: {
-      external: ['mathjs'], // Marca "mathjs" como un paquete externo
+      // Elimina 'mathjs' de la configuración de externos
+      external: [],
     },
   },
 })
