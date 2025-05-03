@@ -9,4 +9,9 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  build: {
+    rollupOptions: {
+      external: ['mathjs'], // Marca "mathjs" como un paquete externo
+    },
+  },
 })
